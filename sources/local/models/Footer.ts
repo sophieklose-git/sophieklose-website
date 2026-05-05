@@ -48,22 +48,17 @@ export const Footer: Model = {
             localized: false
         },
         {
-            type: 'model',
-            name: 'primaryLinks',
-            label: 'Primary Links',
+            type: 'list',
+            name: 'linkGroups',
+            label: 'Link groups',
+            description: 'Footer columns of links (e.g. Navigation / Specialisms / Contact).',
             required: false,
             hidden: false,
             localized: false,
-            models: ['FooterLinksGroup']
-        },
-        {
-            type: 'model',
-            name: 'secondaryLinks',
-            label: 'Secondary Links',
-            required: false,
-            hidden: false,
-            localized: false,
-            models: ['FooterLinksGroup']
+            items: {
+                type: 'model',
+                models: ['FooterLinksGroup']
+            }
         },
         {
             type: 'list',

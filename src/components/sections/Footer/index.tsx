@@ -12,8 +12,7 @@ export default function Footer(props) {
         logo,
         title,
         text,
-        primaryLinks,
-        secondaryLinks,
+        linkGroups = [],
         socialLinks = [],
         legalLinks = [],
         copyrightText,
@@ -58,8 +57,14 @@ export default function Footer(props) {
                             )}
                         </div>
                     )}
-                    {primaryLinks && <FooterLinksGroup {...primaryLinks} {...(enableAnnotations && { 'data-sb-field-path': 'primaryLinks' })} />}
-                    {secondaryLinks && <FooterLinksGroup {...secondaryLinks} {...(enableAnnotations && { 'data-sb-field-path': 'secondaryLinks' })} />}
+                    {linkGroups.length > 0 &&
+                        linkGroups.map((group, index) => (
+                            <FooterLinksGroup
+                                key={index}
+                                {...group}
+                                {...(enableAnnotations && { 'data-sb-field-path': `linkGroups.${index}` })}
+                            />
+                        ))}
                     {socialLinks.length > 0 && (
                         <div className="pb-6">
                             <ul className="flex flex-wrap items-center" {...(enableAnnotations && { 'data-sb-field-path': 'socialLinks' })}>

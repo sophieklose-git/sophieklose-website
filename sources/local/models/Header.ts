@@ -30,6 +30,15 @@ export const Header: Model = {
             localized: false
         },
         {
+            type: 'string',
+            name: 'tagline',
+            label: 'Tagline',
+            description: 'Optional small subline rendered under the title (e.g. brand tagline).',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'model',
             name: 'logo',
             label: 'Logo',
