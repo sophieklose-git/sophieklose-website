@@ -1,109 +1,40 @@
 {
-    "logo": {
-        "url": "/images/logo-white.svg",
-        "altText": "Logo light",
-        "type": "ImageBlock"
-    },
-    "text": "A description of your brand",
-    "primaryLinks": {
-        "title": "Product",
-        "links": [
-            {
-                "label": "Features",
-                "altText": "Features page",
-                "url": "/",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Pricing",
-                "url": "/pricing",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Documentation",
-                "url": "/",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            }
-        ],
-        "type": "FooterLinksGroup"
-    },
-    "secondaryLinks": {
-        "title": "Company",
-        "links": [
-            {
-                "label": "Careers",
-                "altText": "careers page",
-                "url": "/careers",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Blog",
-                "url": "/blog",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            }
-        ],
-        "type": "FooterLinksGroup"
-    },
-    "socialLinks": [
+    "title": "Sophie Klose",
+    "text": "Flourishing Psychology & Wellbeing\n\nBilingual counselling in Zurich and online.\n\n[contact@sophieklose.com](mailto:contact@sophieklose.com)",
+    "linkGroups": [
         {
-            "altText": "GitHub link",
-            "url": "https://github.com/netlify",
-            "icon": "github",
-            "type": "Social"
+            "title": "Navigation",
+            "links": [
+                { "label": "Home", "url": "/", "style": "secondary", "type": "Link" },
+                { "label": "Why Counselling", "url": "/why-counselling", "style": "secondary", "type": "Link" },
+                { "label": "About Me", "url": "/about", "style": "secondary", "type": "Link" },
+                { "label": "Resources", "url": "/resources", "style": "secondary", "type": "Link" },
+                { "label": "Webinars", "url": "/webinars", "style": "secondary", "type": "Link" },
+                { "label": "Book Club", "url": "/book-club", "style": "secondary", "type": "Link" }
+            ],
+            "type": "FooterLinksGroup"
         },
         {
-            "altText": "Twitter link",
-            "url": "https://twitter.com/netlify",
-            "icon": "twitter",
-            "type": "Social"
+            "title": "Specialisms",
+            "links": [
+                { "label": "Life Transitions", "url": "/why-counselling", "style": "secondary", "type": "Link" },
+                { "label": "ADHD & Neurodiversity", "url": "/why-counselling", "style": "secondary", "type": "Link" },
+                { "label": "Tech-Wellbeing", "url": "/why-counselling", "style": "secondary", "type": "Link" }
+            ],
+            "type": "FooterLinksGroup"
         },
         {
-            "altText": "LinkedIn link",
-            "url": "https://www.linkedin.com/company/netlify",
-            "icon": "linkedin",
-            "type": "Social"
-        },
-        {
-            "altText": "Email link",
-            "url": "/",
-            "icon": "mail",
-            "type": "Social"
+            "title": "Contact",
+            "links": [
+                { "label": "Book a Session", "url": "/contact", "style": "secondary", "type": "Link" },
+                { "label": "Send an Email", "url": "mailto:contact@sophieklose.com", "style": "secondary", "type": "Link" }
+            ],
+            "type": "FooterLinksGroup"
         }
     ],
-    "legalLinks": [
-        {
-            "label": "Terms",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Privacy",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        }
-    ],
-    "copyrightText": "Powered by [Netlify](https://www.netlify.com/)\n",
+    "socialLinks": [],
+    "legalLinks": [],
+    "copyrightText": "© 2025 Sophie Klose · Flourishing Psychology & Wellbeing\n\nSGfB · ACA · BACP Member",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }
