@@ -20,11 +20,17 @@ module.exports = {
                 dark: themeStyle.dark,
                 neutral: themeStyle.neutral,
                 neutralAlt: themeStyle.neutralAlt,
-                primary: themeStyle.primary
+                primary: themeStyle.primary,
+                // Brand-constant colors (not editable in the Visual Editor)
+                sage: '#8A9E8C',
+                deepSage: '#4A6B4D',
+                clay: '#C4956A',
+                clayLight: '#E8D5C0',
+                midGrey: '#6B6B6B'
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                serif: ['Roboto Slab', 'serif']
+                sans: ['Jost', 'sans-serif'],
+                serif: ['Cormorant Garamond', 'serif']
             },
             gridTemplateColumns: {
                 16: 'repeat(16, minmax(0, 1fr))'

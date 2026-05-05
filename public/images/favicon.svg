@@ -1,1 +1,8 @@
-<svg width="67" height="79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.097 78.06a33.096 33.096 0 1 1 0-66.193V78.06ZM33.097 0a33.096 33.096 0 1 1 0 66.193V0Z" fill="#000024"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Stylised leaf — two curves meeting at a stem -->
+  <path d="M32 6 C 44 18, 48 36, 32 58 C 16 36, 20 18, 32 6 Z"
+        fill="#4A6B4D"/>
+  <!-- Center vein -->
+  <line x1="32" y1="14" x2="32" y2="54"
+        stroke="#FDFBF8" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
