@@ -42,12 +42,8 @@ export const PageLayout: Model = {
                     'CarouselSection',
                     'DividerSection',
                     'FeaturedItemsSection',
-                    'FeaturedPeopleSection',
-                    'FeaturedPostsSection',
                     'GenericSection',
-                    'ImageGallerySection',
-                    'PricingSection',
-                    'RecentPostsSection'
+                    'ImageGallerySection'
                 ]
             }
         },

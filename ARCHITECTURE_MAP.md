@@ -4,7 +4,7 @@ Translates `SOURCE_INVENTORY.md` into the target Content Ops Starter / Next.js /
 
 **Scope of approval:** the user reviews and approves this map before Phase 2 (Bootstrap). Changes after approval are expensive.
 
-Last updated: 2026-05-04
+Last updated: 2026-05-05
 
 ---
 
@@ -204,3 +204,34 @@ Per Phase 0 decisions and the brief's explicit instructions. Listed here so futu
 - Mailgun domain string (Phase 7 input only — not blocking Phase 2).
 - DNS registrar control / login (Phase 10 input only — not blocking Phase 2).
 - Confirm the two thesis PDFs in `sophiekloserepo-main/` are the canonical versions to bundle in `public/` (Phase 5 input).
+
+---
+
+## 8. Phase 4 implementation strategy (added 2026-05-05)
+
+After inspecting the Content Ops Starter we discovered the starter is more capable than §2 assumed: two starter models (`GenericSection` and `FeaturedItemsSection`) collapse most of our 15 model list. Rather than authoring 15 bespoke models, we **reuse two starter workhorses with configuration variants**, extend two existing models, and add one bespoke model + one standalone content model.
+
+### 8.1 Final model inventory for Phase 4
+
+| Built as | Used for our models from §2 |
+|---|---|
+| **`GenericSection` (reuse, no changes)** | HeroSplitSection, PageHeroSection, TextImageSection, DarkCtaSection, ProseSection, BannerStripSection, TestimonialSection, BookClubFeatureSection, ContactFormSection (with FormBlock media) |
+| **`FeaturedItemsSection` (reuse; possibly extend `FeaturedItem` with explicit `icon` field)** | IconCardGridSection (`variant: three-col-grid`), DetailRowsSection (`variant: big-list`), ResourceGroupSection (`variant: three-col-grid`, one section per group), WebinarsSection (4 inline FeaturedItems on the webinars page; per Phase 4 decision (C), no standalone `Webinar` model), FaqSection (`variant: two-col-grid`, flat layout per Phase 4 decision (B) — toggle/accordion is a Phase 9 candidate) |
+| **`Footer` (extend)** | Footer requires 3 link groups (Navigation / Specialisms / Contact); starter ships only 2 (`primaryLinks` / `secondaryLinks`). Replace with `linkGroups: list of FooterLinksGroup`. |
+| **`Header` (reuse, content-only changes)** | Header — already supports text title + nav links + variant; configure via `header.json`. |
+| **`ContactDetailsSection` (new bespoke model — per Phase 4 decision (A))** | Contact details list (Email / Location / Online / Fees / Languages — 5 detail items each with heading + body markdown). Lightweight model (~30 min); only used on `/contact`. |
+| **`Resource` (new standalone content model)** | ~35 entries in `content/resources/{slug}.json` referenced by `ResourceGroupSection`. |
+| **`AboutLayoutSection`** | **Decided late.** Either extend `GenericSection` with an optional `sideContent` slot for the credentials sidebar, or render the credentials box inline in markdown. Defer until Phase 5 when the about page is migrated. |
+
+### 8.2 Phase 4 build sequence
+
+1. **Phase 4.1 — Cleanup commit: delete unused starter blog/post infrastructure.** Models: `PostLayout`, `PostFeedLayout`, `PostFeedSection`, `PagedPostsSection`, `RecentPostsSection`, `FeaturedPostsSection`, `PricingPlan`, `PricingSection`, `Person`, `FeaturedPeopleSection`. Components: matching `src/components/sections/` and `src/components/layouts/` directories. Content: `content/pages/blog/`, `content/pages/careers.md`, `content/pages/pricing.md`, the six `content/data/personN.json` files. Update `PageLayout.ts` `sections` allowlist + `components-registry.ts` mapping. Single commit. Likely fixes the deferred Phase 2.6 Visual Editor preview iframe error (root cause was `PostFeedLayout.file is required` warning).
+   - **Keep for now** (cheap to leave, possibly useful): `CarouselSection`, `ImageGallerySection`, `DividerSection`.
+2. **Phase 4.2 — Extend `Footer` model + wire `header.json` and `footer.json` content.** Migrate the wordmark, 7 nav links, 4-column footer with 3 link groups, copyright + credentials line.
+3. **Phase 4.3 — Update `PageLayout.ts` sections allowlist** to remove deleted section types (covered in 4.1 if combined).
+4. **Phase 4.4 — Verify `FeaturedItem` renders emoji icons cleanly.** If the source's 🌱/🧠/💡 don't size right via `tagline`, extend `FeaturedItem` with an explicit `icon: string` field.
+5. **Phase 4.5 — Standalone `Resource` content model + `ResourceGroupSection` filter.** Adds the model definition; doesn't yet populate the 35 entries (that's Phase 5).
+6. **Phase 4.6 — Bespoke `ContactDetailsSection` model + component.** ~30 min build.
+7. **Phase 4.7 — Cleanup commit + verify Visual Editor preview now renders.** Single commit, push to main and preview.
+
+`AboutLayoutSection` decision deferred to Phase 5 per §8.1.
