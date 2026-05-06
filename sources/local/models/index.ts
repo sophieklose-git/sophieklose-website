@@ -16,6 +16,8 @@ import { ImageBlock } from './ImageBlock';
 import { ImageGallerySection } from './ImageGallerySection';
 import { Link } from './Link';
 import { PageLayout } from './PageLayout';
+import { Resource } from './Resource';
+import { ResourceGroupSection } from './ResourceGroupSection';
 import { SelectFormControl } from './SelectFormControl';
 import { Social } from './Social';
 import { SubNav } from './SubNav';
@@ -52,6 +54,8 @@ export const allModels = {
     ImageGallerySection,
     Link,
     PageLayout,
+    Resource,
+    ResourceGroupSection,
     SelectFormControl,
     Social,
     SubNav,

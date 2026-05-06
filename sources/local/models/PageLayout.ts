@@ -43,7 +43,8 @@ export const PageLayout: Model = {
                     'DividerSection',
                     'FeaturedItemsSection',
                     'GenericSection',
-                    'ImageGallerySection'
+                    'ImageGallerySection',
+                    'ResourceGroupSection'
                 ]
             }
         },

@@ -725,6 +725,11 @@ sections:
       type: Badge
     colors: bg-light-fg-dark
     type: GenericSection
+  - type: ResourceGroupSection
+    eyebrow: Phase 4.5 smoke test
+    title: ResourceGroupSection — verify rendering
+    group: neurodiversity-adhd
+    colors: bg-neutral-fg-dark
 seo:
   metaTitle: Home - Demo site
   metaDescription: This demo site is built with Netlify Create.
