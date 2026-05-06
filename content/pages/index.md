@@ -143,7 +143,7 @@ sections:
             textAlign: left
       - type: FeaturedItem
         icon: 🧠
-        title: Neurodiversity & ADHD
+        title: "Neurodiversity &\_ \_ \_ \_ADHD"
         text: >-
           Moving away from "fixing" towards "functioning". Specialised guidance
           to navigate the unique strengths and executive functioning challenges
