@@ -4,6 +4,8 @@ import { Button } from './Button';
 import { CarouselSection } from './CarouselSection';
 import { CheckboxFormControl } from './CheckboxFormControl';
 import { Config } from './Config';
+import { ContactDetailsSection } from './ContactDetailsSection';
+import { DetailItem } from './DetailItem';
 import { DividerSection } from './DividerSection';
 import { EmailFormControl } from './EmailFormControl';
 import { FeaturedItem } from './FeaturedItem';
@@ -42,6 +44,8 @@ export const allModels = {
     CarouselSection,
     CheckboxFormControl,
     Config,
+    ContactDetailsSection,
+    DetailItem,
     DividerSection,
     EmailFormControl,
     FeaturedItem,

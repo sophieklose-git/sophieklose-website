@@ -40,6 +40,7 @@ export const PageLayout: Model = {
                 type: 'model',
                 models: [
                     'CarouselSection',
+                    'ContactDetailsSection',
                     'DividerSection',
                     'FeaturedItemsSection',
                     'GenericSection',
