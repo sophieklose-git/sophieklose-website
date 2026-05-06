@@ -7,11 +7,11 @@ import Action from '../../../atoms/Action';
 import ImageBlock from '../../../blocks/ImageBlock';
 
 export default function FeaturedItem(props) {
-    const { elementId, title, tagline, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
+    const { elementId, title, tagline, icon, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';
     const flexDirection = styles?.self?.flexDirection ?? 'col';
-    const hasTextContent = !!(tagline || title || subtitle || text || actions.length > 0);
+    const hasTextContent = !!(icon || tagline || title || subtitle || text || actions.length > 0);
     const hasImage = !!image?.url;
 
     return (
@@ -51,15 +51,24 @@ export default function FeaturedItem(props) {
                             'xs:grow': hasImage && (flexDirection === 'row' || flexDirection === 'row-reversed')
                         })}
                     >
+                        {icon && (
+                            <div
+                                className="text-3xl leading-none mb-6"
+                                aria-hidden="true"
+                                {...(fieldPath && { 'data-sb-field-path': '.icon' })}
+                            >
+                                {icon}
+                            </div>
+                        )}
                         {tagline && (
-                            <p className="text-sm" {...(fieldPath && { 'data-sb-field-path': '.tagline' })}>
+                            <p className={classNames('text-sm', { 'mt-2': icon })} {...(fieldPath && { 'data-sb-field-path': '.tagline' })}>
                                 {tagline}
                             </p>
                         )}
                         {title && (
                             <TitleTag
                                 className={classNames('h3', {
-                                    'mt-2': tagline
+                                    'mt-2': tagline || icon
                                 })}
                                 {...(fieldPath && { 'data-sb-field-path': '.title' })}
                             >
