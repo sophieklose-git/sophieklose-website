@@ -5,9 +5,11 @@ sections:
   - type: GenericSection
     title:
       text: Navigate Life's Transitions with *Clarity and Resilience.*
-      color: text-dark
+      color: text-primary
       type: TitleBlock
-    subtitle: Compassionate, bilingual psychological counselling in Zurich and online. Helping you find belonging, balance, and growth in an ever-changing world.
+    subtitle: >-
+      Compassionate, bilingual psychological counselling in Zurich and online.
+      Helping you find belonging, balance, and growth in an ever-changing world.
     actions:
       - label: Book a Session
         url: /contact
@@ -125,7 +127,10 @@ sections:
       - type: FeaturedItem
         icon: 🌱
         title: 'The Evolving Self: Identity and Belonging'
-        text: From teenage years to major life changes, I offer specialised support for adolescents and adults navigating identity, belonging, relocation, parenthood and career transition.
+        text: >-
+          From teenage years to major life changes, I offer specialised support
+          for adolescents and adults navigating identity, belonging, relocation,
+          parenthood and career transition.
         colors: bg-light-fg-dark
         styles:
           self:
@@ -139,7 +144,10 @@ sections:
       - type: FeaturedItem
         icon: 🧠
         title: Neurodiversity & ADHD
-        text: Moving away from "fixing" towards "functioning". Specialised guidance to navigate the unique strengths and executive functioning challenges of ADHD.
+        text: >-
+          Moving away from "fixing" towards "functioning". Specialised guidance
+          to navigate the unique strengths and executive functioning challenges
+          of ADHD.
         colors: bg-light-fg-dark
         styles:
           self:
@@ -153,7 +161,10 @@ sections:
       - type: FeaturedItem
         icon: 💡
         title: Digital Literacy & Tech-Wellbeing
-        text: Bridging the gap between technology and psychological health. Expert advice on digital literacy, AI in mental health, and maintaining secure human attachments.
+        text: >-
+          Bridging the gap between technology and psychological health. Expert
+          advice on digital literacy, AI in mental health, and maintaining
+          secure human attachments.
         colors: bg-light-fg-dark
         styles:
           self:
@@ -182,12 +193,18 @@ sections:
       color: text-dark
       type: TitleBlock
     subtitle: My Approach
-    text: |-
-      I believe that each person carries their own inner wisdom. My role is not to prescribe solutions, but to walk alongside you as you discover and reconnect with your strengths.
+    text: >-
+      I believe that each person carries their own inner wisdom. My role is not
+      to prescribe solutions, but to walk alongside you as you discover and
+      reconnect with your strengths.
+
 
       > "A warm, non-judgemental space where you can be truly yourself."
 
-      Drawing on evidence-based approaches — including person-centred therapy, CBT, and mindfulness — I tailor every session to your unique needs and goals.
+
+      Drawing on evidence-based approaches — including person-centred therapy,
+      CBT, and mindfulness — I tailor every session to your unique needs and
+      goals.
     actions:
       - label: Learn more about me
         url: /about
@@ -215,7 +232,9 @@ sections:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Sessions available in person in Zurich and online worldwide · Séances en français et en anglais
+    subtitle: >-
+      Sessions available in person in Zurich and online worldwide · Séances en
+      français et en anglais
     colors: bg-neutralAlt-fg-dark
     styles:
       self:
@@ -230,8 +249,11 @@ sections:
         textAlign: center
   - type: GenericSection
     subtitle: Client Reflections
-    text: |-
-      > "Working with Sophie helped me finally understand myself during one of the most challenging transitions of my life. I left each session feeling lighter, clearer, and more hopeful."
+    text: >-
+      > "Working with Sophie helped me finally understand myself during one of
+      the most challenging transitions of my life. I left each session feeling
+      lighter, clearer, and more hopeful."
+
 
       — Client, Relocation & Identity Counselling
     colors: bg-light-fg-dark
@@ -256,7 +278,9 @@ sections:
           textAlign: center
       type: TitleBlock
     subtitle: Ready to Begin?
-    text: Reaching out is often the hardest part. I offer a free 15-minute introductory call so we can explore whether we're a good fit.
+    text: >-
+      Reaching out is often the hardest part. I offer a free 15-minute
+      introductory call so we can explore whether we're a good fit.
     actions:
       - label: Get in Touch
         url: /contact
@@ -278,7 +302,9 @@ sections:
         textAlign: center
 seo:
   metaTitle: Flourishing Psychology & Wellbeing — Sophie Klose
-  metaDescription: Compassionate, bilingual psychological counselling in Zurich and online. Specialised support for life transitions, ADHD, and digital wellbeing.
+  metaDescription: >-
+    Compassionate, bilingual psychological counselling in Zurich and online.
+    Specialised support for life transitions, ADHD, and digital wellbeing.
   socialImage: /images/seerose.jpg
   type: Seo
 type: PageLayout
