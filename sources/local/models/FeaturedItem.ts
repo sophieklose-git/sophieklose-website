@@ -28,6 +28,16 @@ export const FeaturedItem: Model = {
         },
         {
             type: 'string',
+            name: 'icon',
+            label: 'Icon',
+            description:
+                'A short string rendered as a large icon above the title. Accepts an emoji (e.g. 🌱) or a step number (e.g. 01).',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
             name: 'subtitle',
             label: 'Subtitle',
             required: false,

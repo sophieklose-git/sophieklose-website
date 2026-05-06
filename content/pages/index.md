@@ -62,6 +62,7 @@ sections:
     subtitle: Subtitle goes here
     items:
       - type: FeaturedItem
+        icon: 🌱
         title: 500k
         subtitle: Numbers Done
         text: >-
