@@ -10,7 +10,7 @@ export const TitleBlock: Model = {
             type: 'string',
             name: 'text',
             label: 'Text',
-            description: 'The text in the title',
+            description: 'The text in the title. Supports inline markdown — wrap a phrase in *single asterisks* to italicise it (e.g. "Take the First Step Towards *Lasting Wellbeing*").',
             required: false,
             default: 'This Is A Big Headline',
             hidden: false,
