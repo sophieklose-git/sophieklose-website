@@ -88,5 +88,14 @@ const StaticPropsResolvers = {
     },
     FeaturedPeopleSection: (props, data, debugContext) => {
         return resolveReferences(props, ['people'], data.objects, debugContext);
+    },
+    ResourceGroupSection: (props, data) => {
+        const resources = (data.objects ?? []).filter(
+            (object) => object.__metadata?.modelName === 'Resource' && object.group === props.group
+        );
+        return {
+            ...props,
+            resources
+        };
     }
 };
