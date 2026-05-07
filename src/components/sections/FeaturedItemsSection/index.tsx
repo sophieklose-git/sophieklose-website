@@ -134,7 +134,7 @@ function FeaturedItemsSmallList(props) {
     const FeaturedItem = getComponent('FeaturedItem');
     return (
         <div
-            className={classNames('w-full', 'max-w-3xl', 'grid', 'gap-10', { 'mt-12': hasTopMargin })}
+            className={classNames('w-full', 'max-w-3xl', 'flex', 'flex-col', 'divide-y', 'divide-[#e0d9cc]', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
             {items.map((item, index) => (

@@ -40,6 +40,34 @@ export const ContactDetailsSection: Model = {
         },
         {
             type: 'string',
+            name: 'formTitle',
+            label: 'Form heading',
+            description: 'Optional heading shown above the form (e.g. "Send a Message").',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'model',
+            name: 'form',
+            label: 'Form',
+            description: 'Optional contact form rendered to the right of the details.',
+            required: false,
+            hidden: false,
+            localized: false,
+            models: ['FormBlock']
+        },
+        {
+            type: 'markdown',
+            name: 'formFootnote',
+            label: 'Form footnote',
+            description: 'Optional small text displayed below the form (e.g. confidentiality note).',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
             name: 'elementId',
             label: 'Element ID',
             description: 'The unique ID for an HTML element, must not contain whitespace.',

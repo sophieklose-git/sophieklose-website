@@ -245,6 +245,20 @@
             @apply bg-dark;
         }
     }
+    .bg-primary-fg-light,
+    .sb-card.bg-primary-fg-light {
+        @apply text-light bg-primary;
+        .sb-component-button-primary {
+            @apply bg-light border-light text-primary;
+        }
+        .sb-component-button-secondary {
+            @apply border-light text-light;
+        }
+        .sb-divider,
+        .sb-footer-bottom {
+            @apply border-light/20;
+        }
+    }
     .bg-dark-fg-light,
     .sb-card.bg-dark-fg-light {
         @apply text-light bg-dark;

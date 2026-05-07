@@ -4,6 +4,16 @@ import Markdown from 'markdown-to-jsx';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 
+function renderInlineEmphasis(text: string) {
+    const parts = text.split(/(\*[^*]+\*)/g);
+    return parts.map((part, i) => {
+        if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+            return <em key={i} className="text-primary">{part.slice(1, -1)}</em>;
+        }
+        return <React.Fragment key={i}>{part}</React.Fragment>;
+    });
+}
+
 const TAG_LABELS: Record<string, string> = {
     book: 'Book',
     podcast: 'Podcast',
@@ -51,15 +61,16 @@ export default function ResourceGroupSection(props) {
                         className="font-serif text-3xl sm:text-4xl mb-12"
                         {...(enableAnnotations && fieldPath && { 'data-sb-field-path': '.title' })}
                     >
-                        {title}
+                        {renderInlineEmphasis(title)}
                     </h2>
                 )}
                 {resources.length > 0 ? (
-                    <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {resources.map((resource, index) => (
                             <ResourceCard
                                 key={resource.__metadata?.id ?? index}
                                 resource={resource}
+                                sectionColors={colors}
                                 enableAnnotations={enableAnnotations}
                             />
                         ))}
@@ -72,18 +83,19 @@ export default function ResourceGroupSection(props) {
     );
 }
 
-function ResourceCard({ resource, enableAnnotations }) {
+function ResourceCard({ resource, sectionColors, enableAnnotations }) {
     const { title, description, tag, linkLabel, linkUrl } = resource;
     const tagLabel = TAG_LABELS[tag] ?? tag;
     const objectId = resource.__metadata?.id;
+    const cardBg = sectionColors === 'bg-neutral-fg-dark' ? 'bg-light' : 'bg-neutral';
     return (
         <li
-            className="border-t border-neutralAlt pt-6"
+            className={classNames(cardBg, 'border-l-[3px] border-neutralAlt hover:border-clay transition-colors p-8 flex flex-col h-full')}
             {...(enableAnnotations && objectId && { 'data-sb-object-id': objectId })}
         >
             {tagLabel && (
                 <p
-                    className="inline-block text-[0.65rem] uppercase tracking-widest text-clay mb-3"
+                    className="text-[0.65rem] uppercase tracking-widest text-sage mb-3"
                     {...(enableAnnotations && { 'data-sb-field-path': 'tag' })}
                 >
                     {tagLabel}
@@ -111,7 +123,7 @@ function ResourceCard({ resource, enableAnnotations }) {
                     href={linkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block text-sm text-deepSage border-b border-clayLight pb-0.5 hover:border-clay"
+                    className="mt-auto self-start inline-block text-sm text-deepSage border-b border-clayLight pb-0.5 hover:border-clay"
                     {...(enableAnnotations && { 'data-sb-field-path': 'linkUrl' })}
                 >
                     <span {...(enableAnnotations && { 'data-sb-field-path': 'linkLabel' })}>{linkLabel ?? 'Learn more →'}</span>

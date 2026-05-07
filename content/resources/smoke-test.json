@@ -1,9 +1,0 @@
-{
-    "title": "Smoke test — sample resource",
-    "tag": "book",
-    "description": "Phase 4.5 verification entry. Delete after content migration.",
-    "linkLabel": "Learn more →",
-    "linkUrl": "https://example.com",
-    "group": "neurodiversity-adhd",
-    "type": "Resource"
-}

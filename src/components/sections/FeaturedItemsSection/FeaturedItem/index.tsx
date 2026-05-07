@@ -14,12 +14,16 @@ export default function FeaturedItem(props) {
     const hasTextContent = !!(icon || tagline || title || subtitle || text || actions.length > 0);
     const hasImage = !!image?.url;
 
+    const isCreamCard = colors === 'bg-neutral-fg-dark';
     return (
         <div
             id={elementId}
             className={classNames(
                 'sb-card',
                 colors,
+                'h-full',
+                'flex',
+                'flex-col',
                 styles?.self?.margin ? mapStyles({ margin: styles?.self?.margin }) : undefined,
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : undefined,
                 styles?.self?.borderWidth && styles?.self?.borderWidth !== 0 && styles?.self?.borderStyle !== 'none'
@@ -29,13 +33,14 @@ export default function FeaturedItem(props) {
                           borderColor: styles?.self?.borderColor ?? 'border-primary'
                       })
                     : undefined,
+                isCreamCard && 'border-l-[3px] border-neutralAlt hover:border-clay transition-colors',
                 styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined,
                 styles?.self?.textAlign ? mapStyles({ textAlign: styles?.self?.textAlign }) : undefined,
                 'overflow-hidden'
             )}
             data-sb-field-path={fieldPath}
         >
-            <div className={classNames('w-full', 'flex', mapFlexDirectionStyles(flexDirection, hasTextContent, hasImage), 'gap-6')}>
+            <div className={classNames('w-full', 'flex-1', 'flex', mapFlexDirectionStyles(flexDirection, hasTextContent, hasImage), 'gap-6')}>
                 {hasImage && (
                     <ImageBlock
                         {...image}
@@ -47,7 +52,7 @@ export default function FeaturedItem(props) {
                 )}
                 {hasTextContent && (
                     <div
-                        className={classNames('w-full', {
+                        className={classNames('w-full', 'flex', 'flex-col', 'flex-1', {
                             'xs:grow': hasImage && (flexDirection === 'row' || flexDirection === 'row-reversed')
                         })}
                     >
@@ -99,14 +104,13 @@ export default function FeaturedItem(props) {
                         {actions.length > 0 && (
                             <div
                                 className={classNames(
+                                    'mt-auto',
+                                    'pt-6',
                                     'flex',
                                     'flex-wrap',
                                     mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }),
                                     'items-center',
-                                    'gap-4',
-                                    {
-                                        'mt-6': tagline || title || subtitle || text
-                                    }
+                                    'gap-4'
                                 )}
                                 {...(fieldPath && { 'data-sb-field-path': '.actions' })}
                             >

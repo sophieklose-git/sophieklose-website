@@ -262,7 +262,7 @@ sections:
         url: /contact
         style: primary
         type: Button
-    colors: bg-dark-fg-light
+    colors: bg-primary-fg-light
     styles:
       self:
         flexDirection: col

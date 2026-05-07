@@ -105,6 +105,13 @@ export const GenericSection: Model = {
                     textColor: '$light',
                     backgroundColor: '$dark',
                     borderColor: '#ececec'
+                },
+                {
+                    label: 'Primary (sage) background, light foreground',
+                    value: 'bg-primary-fg-light',
+                    textColor: '$light',
+                    backgroundColor: '$primary',
+                    borderColor: '#ececec'
                 }
             ],
             group: 'styles',
