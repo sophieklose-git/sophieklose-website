@@ -1,3 +1,38 @@
 [build]
   command = "npm run build"
   publish = ".next"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/why-counselling.html"
+  to = "/why-counselling"
+  status = 301
+
+[[redirects]]
+  from = "/webinars.html"
+  to = "/webinars"
+  status = 301
+
+[[redirects]]
+  from = "/book-club.html"
+  to = "/book-club"
+  status = 301
+
+[[redirects]]
+  from = "/resources.html"
+  to = "/resources"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
