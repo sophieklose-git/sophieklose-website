@@ -1,0 +1,23 @@
+<!--
+  Static form scaffold required by @netlify/plugin-nextjs v5 for Netlify Forms
+  deploy-time detection. Form submissions POST here via fetch() in FormBlock.
+  Keep field names in sync with content/pages/contact.md.
+  See: https://opennext.js.org/netlify/forms
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <form name="contact-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact-form" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="language" />
+      <input type="text" name="format" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>
