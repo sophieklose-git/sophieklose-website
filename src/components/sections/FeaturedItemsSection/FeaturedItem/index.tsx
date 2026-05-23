@@ -7,7 +7,7 @@ import Action from '../../../atoms/Action';
 import ImageBlock from '../../../blocks/ImageBlock';
 
 export default function FeaturedItem(props) {
-    const { elementId, title, tagline, icon, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
+    const { elementId, title, tagline, icon, iconColor, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';
     const flexDirection = styles?.self?.flexDirection ?? 'col';
@@ -58,7 +58,7 @@ export default function FeaturedItem(props) {
                     >
                         {icon && (
                             <div
-                                className="text-3xl leading-none mb-6"
+                                className={classNames('text-3xl leading-none mb-6', iconColor)}
                                 aria-hidden="true"
                                 {...(fieldPath && { 'data-sb-field-path': '.icon' })}
                             >

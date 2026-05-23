@@ -8,6 +8,18 @@ sections:
       color: text-dark
       type: TitleBlock
     subtitle: Compassionate, bilingual psychological counselling in Zurich and online. Helping you find belonging, balance, and growth in an ever-changing world.
+    text: |-
+      <div class="mt-12 max-w-sm text-sm">
+      <p class="text-xs uppercase tracking-widest font-semibold opacity-70 mb-3">Professional Credentials</p>
+      <div class="py-3 border-b border-gray-300">MA Counselling</div>
+      <div class="py-3 border-b border-gray-300">BSc (Hons) Psychology</div>
+      <div class="py-3 border-b border-gray-300">NSNS Neurodivergent Practice Certified</div>
+      <div class="py-3 border-b border-gray-300">SGfB Member</div>
+      <div class="py-3 border-b border-gray-300">ACA Member</div>
+      <div class="py-3 border-b border-gray-300">BACP Member</div>
+      <div class="py-3 border-b border-gray-300">Bilingual — French &amp; English</div>
+      <div class="py-3 border-b border-gray-300">Zurich &amp; Online Practice</div>
+      </div>
     actions:
       - label: Book a Session
         url: /contact
@@ -35,83 +47,6 @@ sections:
           - pl-16
           - pb-16
           - pr-16
-  - type: FeaturedItemsSection
-    items:
-      - type: FeaturedItem
-        title: SGfB Member
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-      - type: FeaturedItem
-        title: ACA Member
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-      - type: FeaturedItem
-        title: BACP Member
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-      - type: FeaturedItem
-        title: MA Counselling
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-      - type: FeaturedItem
-        title: BSc (Hons) Psychology
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-      - type: FeaturedItem
-        title: French & English Sessions
-        colors: bg-light-fg-dark
-        styles:
-          self:
-            textAlign: center
-            padding:
-              - pt-3
-              - pb-3
-              - pl-3
-              - pr-3
-    colors: bg-neutralAlt-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-6
-          - pb-6
-          - pl-8
-          - pr-8
-        justifyContent: center
   - type: FeaturedItemsSection
     title:
       text: Where I Can *Support You*

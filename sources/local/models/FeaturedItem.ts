@@ -38,6 +38,16 @@ export const FeaturedItem: Model = {
         },
         {
             type: 'string',
+            name: 'iconColor',
+            label: 'Icon color',
+            description:
+                'Optional Tailwind class(es) applied to the icon. E.g. "text-deepSage" for green, or "text-deepSage font-bold" to also weight it.',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
             name: 'subtitle',
             label: 'Subtitle',
             required: false,

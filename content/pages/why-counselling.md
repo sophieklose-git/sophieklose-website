@@ -55,9 +55,12 @@ sections:
     title:
       text: Specialised Support for *Your Journey*
       color: text-dark
+      styles:
+        self:
+          textAlign: left
       type: TitleBlock
     subtitle: Areas of Focus
-    variant: big-list
+    variant: two-col-grid
     items:
       - type: FeaturedItem
         icon: 🌱
@@ -66,9 +69,21 @@ sections:
           Life's major transitions — relocating to a new country, becoming a parent, changing careers, navigating adolescence — can shake our sense of who we are. These moments can feel disorienting, even when they're also exciting.
 
           I specialise in helping people bridge the gap between who they were and who they are becoming. Whether you're an expat finding your footing in Switzerland, a young adult figuring out your values, or someone in the middle of a major life change, I offer compassionate, culturally sensitive support.
-
-          **Areas include:**
-
+        colors: bg-light-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-8
+              - pb-8
+              - pl-8
+              - pr-8
+            borderRadius: x-large
+            textAlign: left
+      - type: FeaturedItem
+        icon: ✔
+        iconColor: text-deepSage font-bold
+        title: Areas Include
+        text: |-
           - Expat adjustment & cultural identity
           - Adolescence & young adulthood
           - Parenthood transitions
@@ -85,6 +100,20 @@ sections:
               - pr-8
             borderRadius: x-large
             textAlign: left
+    colors: bg-neutralAlt-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-16
+          - pb-8
+          - pl-8
+          - pr-8
+        justifyContent: flex-start
+      subtitle:
+        textAlign: left
+  - type: FeaturedItemsSection
+    variant: two-col-grid
+    items:
       - type: FeaturedItem
         icon: 🧠
         title: Neurodiversity & ADHD
@@ -92,9 +121,21 @@ sections:
           Living with ADHD or neurodivergence in a world designed for neurotypical minds can be exhausting. Too often, the focus is on what's "wrong" — when the truth is that ADHD comes with remarkable strengths alongside its challenges.
 
           I work with neurodivergent clients from a strengths-based perspective, helping you move away from self-criticism and towards strategies that actually work for your brain. This includes executive functioning support, emotional regulation, relationships, and self-esteem.
-
-          **Areas include:**
-
+        colors: bg-light-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-8
+              - pb-8
+              - pl-8
+              - pr-8
+            borderRadius: x-large
+            textAlign: left
+      - type: FeaturedItem
+        icon: ✔
+        iconColor: text-deepSage font-bold
+        title: Areas Include
+        text: |-
           - ADHD executive functioning strategies
           - Emotional dysregulation
           - Rejection sensitive dysphoria
@@ -111,6 +152,18 @@ sections:
               - pr-8
             borderRadius: x-large
             textAlign: left
+    colors: bg-neutralAlt-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-8
+          - pb-8
+          - pl-8
+          - pr-8
+        justifyContent: center
+  - type: FeaturedItemsSection
+    variant: two-col-grid
+    items:
       - type: FeaturedItem
         icon: 💡
         title: Digital Literacy & Tech-Wellbeing
@@ -118,9 +171,21 @@ sections:
           We are living through an unprecedented technological transformation. Artificial intelligence, social media, and constant connectivity are reshaping how we work, relate, and understand ourselves.
 
           I offer expert guidance at the intersection of psychology and technology — helping individuals, families, and organisations navigate digital life in a way that supports, rather than undermines, psychological health and human connection.
-
-          **Areas include:**
-
+        colors: bg-light-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-8
+              - pb-8
+              - pl-8
+              - pr-8
+            borderRadius: x-large
+            textAlign: left
+      - type: FeaturedItem
+        icon: ✔
+        iconColor: text-deepSage font-bold
+        title: Areas Include
+        text: |-
           - Screen time & digital balance
           - AI & mental health literacy
           - Social media & self-image
@@ -141,7 +206,7 @@ sections:
     styles:
       self:
         padding:
-          - pt-16
+          - pt-8
           - pb-16
           - pl-8
           - pr-8
@@ -150,6 +215,9 @@ sections:
     title:
       text: What Working Together *Looks Like*
       color: text-dark
+      styles:
+        self:
+          textAlign: left
       type: TitleBlock
     subtitle: The Process
     variant: three-col-grid
@@ -204,7 +272,9 @@ sections:
           - pb-16
           - pl-8
           - pr-8
-        justifyContent: center
+        justifyContent: flex-start
+      subtitle:
+        textAlign: left
   - type: GenericSection
     title:
       text: Ready to Take the *First Step?*
