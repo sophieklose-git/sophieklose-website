@@ -33,10 +33,8 @@ export default function PageLayout(props) {
                                 />
                             );
                             // First section (hero) renders without fade-in so above-the-fold content doesn't pop in delayed.
-                            // Grid-style sections (FeaturedItemsSection, ResourceGroupSection) fade their individual cards instead of the whole section.
                             // Sections can also opt out via noFade: true in content.
-                            const gridSections = ['FeaturedItemsSection', 'ResourceGroupSection'];
-                            if (index === 0 || section.noFade || gridSections.includes(section.__metadata.modelName)) {
+                            if (index === 0 || section.noFade) {
                                 return sectionEl;
                             }
                             return (

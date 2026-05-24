@@ -38,19 +38,29 @@ export default function MyApp({ Component, pageProps }) {
     // We watch them with IntersectionObserver and add .visible once they enter the viewport.
     // Re-runs on every client-side route change so newly mounted sections are observed.
     useEffect(() => {
+        const reveal = (el) => el.classList.add('visible');
         const obs = new IntersectionObserver(
             (entries) => {
                 entries.forEach((e) => {
                     if (e.isIntersecting) {
-                        e.target.classList.add('visible');
+                        reveal(e.target);
                         obs.unobserve(e.target);
                     }
                 });
             },
-            { threshold: 0.12 }
+            { threshold: 0, rootMargin: '0px 0px -5% 0px' }
         );
-        document.querySelectorAll('.fade-in:not(.visible)').forEach((el) => obs.observe(el));
-        return () => obs.disconnect();
+        const els = document.querySelectorAll('.fade-in:not(.visible)');
+        els.forEach((el) => obs.observe(el));
+        // Safety net: if for any reason the observer never fires (e.g. zero-height parent,
+        // display:contents ancestor, browser quirk), reveal any laggards after 1.5s.
+        const fallback = window.setTimeout(() => {
+            document.querySelectorAll('.fade-in:not(.visible)').forEach(reveal);
+        }, 1500);
+        return () => {
+            obs.disconnect();
+            window.clearTimeout(fallback);
+        };
     }, [router.asPath]);
 
     return (
