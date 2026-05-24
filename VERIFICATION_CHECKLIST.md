@@ -121,14 +121,14 @@ _Skipped explicit walkthrough; user confirmed pages look right at default viewpo
 
 Run Lighthouse in Chrome devtools → mobile profile:
 
-Homepage (`/`) measured 2026-05-23:
-- [ ] Performance ≥ 80 — **71** 🟡 below target; expected, hero images ~1-1.5 MB each. → Phase 9 polish item.
+Homepage (`/`) re-measured 2026-05-23 after Phase 9 polish:
+- [x] Performance ≥ 80 — **93** ✅ (was 71; fonts + image compression + WebP via `<picture>` + browserslist)
 - [x] Accessibility ≥ 90 — **96** ✅
 - [x] Best Practices ≥ 90 — **96** ✅
 - [x] SEO ≥ 95 — **100** ✅
-- [ ] LCP image (hero seerose) loads quickly — likely the perf bottleneck. Compress + WebP/AVIF in Phase 9.
+- [x] LCP image (hero seerose) — compressed 863 → 163 KB; WebP 84 KB served to supporting browsers
 
-Other pages not individually measured; smoke check considered sufficient at this stage.
+Other pages not individually measured; homepage is representative of the heaviest viewport.
 
 ## 13. Accessibility quick pass
 

@@ -9,25 +9,31 @@ const IMAGES = [
     { file: 'public/images/seerose.jpg', maxWidth: 1600, jpegQuality: 80 },
     { file: 'public/images/zebra2.jpg', maxWidth: 1600, jpegQuality: 80 },
     { file: 'public/images/elephants.jpg', maxWidth: 1600, jpegQuality: 80 },
-    { file: 'public/images/sophiepicture.jpg', maxWidth: 1200, jpegQuality: 82 }
+    { file: 'public/images/sophiepicture.jpg', maxWidth: 1200, jpegQuality: 82 },
+    { file: 'public/images/the-stoic-challenge.png', maxWidth: 600, jpegQuality: 85 }
 ];
 
 for (const { file, maxWidth, jpegQuality } of IMAGES) {
     const abs = resolve(file);
     const before = statSync(abs).size;
     const buf = readFileSync(abs);
+    const isJpeg = /\.jpe?g$/i.test(file);
 
-    // Re-encode as compressed JPEG (overwrite in place).
-    const jpegOut = await sharp(buf).resize({ width: maxWidth, withoutEnlargement: true }).jpeg({ quality: jpegQuality, mozjpeg: true }).toBuffer();
-    writeFileSync(abs, jpegOut);
+    // For JPEGs, re-encode at the target quality (overwrite in place).
+    // For PNGs (e.g. book covers), leave the original alone — it's usually already small.
+    if (isJpeg) {
+        const jpegOut = await sharp(buf).resize({ width: maxWidth, withoutEnlargement: true }).jpeg({ quality: jpegQuality, mozjpeg: true }).toBuffer();
+        writeFileSync(abs, jpegOut);
+    }
 
-    // Also emit a WebP sibling.
-    const webpPath = abs.replace(/\.jpe?g$/i, '.webp');
+    // Always emit a WebP sibling for <picture> source.
+    const webpPath = abs.replace(/\.(jpe?g|png)$/i, '.webp');
     const webpOut = await sharp(buf).resize({ width: maxWidth, withoutEnlargement: true }).webp({ quality: 78 }).toBuffer();
     writeFileSync(webpPath, webpOut);
 
-    const afterJpeg = statSync(abs).size;
+    const afterOriginal = statSync(abs).size;
     const afterWebp = statSync(webpPath).size;
-    const pct = ((1 - afterJpeg / before) * 100).toFixed(0);
-    console.log(`${file}: ${(before / 1024).toFixed(0)} KB → JPG ${(afterJpeg / 1024).toFixed(0)} KB (-${pct}%), WebP ${(afterWebp / 1024).toFixed(0)} KB`);
+    const pct = ((1 - afterOriginal / before) * 100).toFixed(0);
+    const label = isJpeg ? 'JPG' : 'PNG (untouched)';
+    console.log(`${file}: ${(before / 1024).toFixed(0)} KB → ${label} ${(afterOriginal / 1024).toFixed(0)} KB (-${pct}%), WebP ${(afterWebp / 1024).toFixed(0)} KB`);
 }
