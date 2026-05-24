@@ -25,6 +25,7 @@ sections:
     media:
       url: /images/sophiepicture.jpg
       altText: Sophie Klose smiling warmly in a calm office setting
+      imageClassName: w-4/5 mx-auto
       type: ImageBlock
     colors: bg-light-fg-dark
     styles:

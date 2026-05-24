@@ -131,6 +131,7 @@ sections:
     media:
       url: /images/zebra2.jpg
       altText: Two zebras side by side — symbol of companionship
+      imageClassName: w-[70%] mx-auto
       type: ImageBlock
     colors: bg-light-fg-dark
     styles:

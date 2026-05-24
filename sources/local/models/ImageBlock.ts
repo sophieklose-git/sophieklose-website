@@ -27,6 +27,16 @@ export const ImageBlock: Model = {
         },
         {
             type: 'string',
+            name: 'imageClassName',
+            label: 'Image class name',
+            description:
+                'Optional Tailwind class(es) applied directly to the <img> element. E.g. "w-4/5 mx-auto" to render at 80% width centered.',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
             name: 'elementId',
             label: 'Element ID',
             description: 'The unique ID for an HTML element, must not contain whitespace',

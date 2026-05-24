@@ -38,14 +38,6 @@ sections:
 
       The themes will draw from **psychology, neuroscience, neurodiversity, parenting, and philosophy** — all with the aim of deepening our understanding of ourselves and those around us.
 
-      <div class="flex flex-wrap gap-3 my-8">
-      <span class="inline-block px-4 py-2 border border-neutralAlt rounded-full bg-neutral text-xs tracking-wider">Psychology</span>
-      <span class="inline-block px-4 py-2 border border-neutralAlt rounded-full bg-neutral text-xs tracking-wider">Neuroscience</span>
-      <span class="inline-block px-4 py-2 border border-neutralAlt rounded-full bg-neutral text-xs tracking-wider">Neurodiversity</span>
-      <span class="inline-block px-4 py-2 border border-neutralAlt rounded-full bg-neutral text-xs tracking-wider">Parenting</span>
-      <span class="inline-block px-4 py-2 border border-neutralAlt rounded-full bg-neutral text-xs tracking-wider">Philosophy</span>
-      </div>
-
       At the beginning of each month, a new book will be introduced. At the end, I will share a short reflection highlighting the key ideas and insights I found most valuable.
 
       This club is open to anyone curious about the human experience. All you need is a book and a curiosity to explore and broaden your understanding.
@@ -66,7 +58,6 @@ sections:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: A Note
     colors: bg-neutralAlt-fg-dark
     styles:
       self:
@@ -87,11 +78,10 @@ sections:
       color: text-dark
       styles:
         self:
-          textAlign: center
+          textAlign: left
       type: TitleBlock
-    subtitle: This Month
     text: |-
-      ## [*The Stoic Challenge*](https://www.amazon.de/-/en/Stoic-Challenge-Philosophers-Becoming-Resilient/dp/0393541495)
+      <p class="text-lg sm:text-2xl text-left mt-4"><a class="no-underline hover:no-underline" href="https://www.amazon.de/-/en/Stoic-Challenge-Philosophers-Becoming-Resilient/dp/0393541495">The Stoic Challenge</a></p>
 
       *by William B. Irvine*
 
@@ -108,6 +98,7 @@ sections:
       url: /images/the-stoic-challenge.png
       altText: The Stoic Challenge by William B. Irvine — book cover
       type: ImageBlock
+    wideText: true
     colors: bg-light-fg-dark
     styles:
       self:
@@ -117,9 +108,9 @@ sections:
           - pt-16
           - pb-16
           - pl-16
-          - pr-16
+          - pr-8
       subtitle:
-        textAlign: center
+        textAlign: left
   - type: GenericSection
     title:
       text: Have a *Question?*

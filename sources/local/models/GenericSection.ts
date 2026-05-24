@@ -76,6 +76,17 @@ export const GenericSection: Model = {
             group: 'settings'
         },
         {
+            type: 'boolean',
+            name: 'wideText',
+            label: 'Wide text column',
+            description:
+                'When true (and the section has both text and media in a row layout), the text column uses the full section-body width instead of being capped at 27.5rem.',
+            required: false,
+            default: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'enum',
             name: 'colors',
             label: 'Colors',
