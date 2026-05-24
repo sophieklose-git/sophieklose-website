@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you
+Disallow: /__forms.html
+
+# Sitemap to be added in Phase 9 polish
