@@ -20,6 +20,7 @@ export default function FeaturedItem(props) {
             id={elementId}
             className={classNames(
                 'sb-card',
+                'fade-in',
                 colors,
                 'h-full',
                 'flex',

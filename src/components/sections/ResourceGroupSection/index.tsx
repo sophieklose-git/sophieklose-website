@@ -90,7 +90,7 @@ function ResourceCard({ resource, sectionColors, enableAnnotations }) {
     const cardBg = sectionColors === 'bg-neutral-fg-dark' ? 'bg-light' : 'bg-neutral';
     return (
         <li
-            className={classNames(cardBg, 'border-l-[3px] border-neutralAlt hover:border-clay transition-colors p-8 flex flex-col h-full')}
+            className={classNames(cardBg, 'fade-in border-l-[3px] border-neutralAlt hover:border-clay transition-colors p-8 flex flex-col h-full')}
             {...(enableAnnotations && objectId && { 'data-sb-object-id': objectId })}
         >
             {tagLabel && (

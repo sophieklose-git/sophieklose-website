@@ -339,3 +339,20 @@
         }
     }
 }
+
+/* Fade-in-on-scroll. JS adds .visible when the element enters the viewport.
+   Gated by html.js so non-JS users see content immediately (graceful degradation). */
+.fade-in {
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js .fade-in:not(.visible) {
+    opacity: 0;
+    transform: translateY(24px);
+}
+@media (prefers-reduced-motion: reduce) {
+    .js .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

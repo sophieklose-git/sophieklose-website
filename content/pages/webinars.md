@@ -30,6 +30,9 @@ sections:
     title:
       text: Explore & *Purchase*
       color: text-dark
+      styles:
+        self:
+          textAlign: left
       type: TitleBlock
     subtitle: Available Webinars
     variant: two-col-grid
@@ -130,7 +133,9 @@ sections:
           - pb-16
           - pl-8
           - pr-8
-        justifyContent: center
+        justifyContent: flex-start
+      subtitle:
+        textAlign: left
   - type: FeaturedItemsSection
     title:
       text: Simple Steps to *Get Started*
