@@ -9,6 +9,7 @@ import ImageBlock from '../../blocks/ImageBlock';
 import ChevronDownIcon from '../../svgs/chevron-down';
 import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
+import UserIcon from '../../svgs/user';
 
 export default function Header(props) {
     const { colors = 'bg-light-fg-dark', styles = {}, enableAnnotations } = props;
@@ -126,8 +127,23 @@ function HeaderLogoLeftPrimaryRight(props) {
                     <ListOfLinks links={secondaryLinks} enableAnnotations={enableAnnotations} />
                 </ul>
             )}
+            <LoginIconLink />
             {(primaryLinks.length > 0 || secondaryLinks.length > 0) && <MobileMenu {...props} />}
         </div>
+    );
+}
+
+// Login icon at the far right of the header. Placeholder /login page until Phase 11 (Supabase auth) wires up real authentication.
+function LoginIconLink() {
+    return (
+        <a
+            href="/login"
+            aria-label="Sign in or register"
+            title="Sign in"
+            className="hidden lg:inline-flex items-center justify-center w-9 h-9 ml-4 text-current hover:text-primary transition-colors"
+        >
+            <UserIcon className="w-5 h-5" />
+        </a>
     );
 }
 
