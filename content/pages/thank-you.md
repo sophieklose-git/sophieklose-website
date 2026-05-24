@@ -51,6 +51,10 @@ sections:
 seo:
   metaTitle: Thank You — Sophie Klose
   metaDescription: Your message has been received. Sophie Klose will respond within 24 hours on working days.
+  metaTags:
+    - property: robots
+      content: noindex, nofollow
+      type: MetaTag
   type: Seo
 type: PageLayout
 ---

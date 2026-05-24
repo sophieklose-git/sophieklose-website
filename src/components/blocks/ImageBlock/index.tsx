@@ -13,6 +13,24 @@ export default function ImageBlock(props) {
         ? { 'data-sb-field-path': [fieldPath, `${fieldPath}.url#@src`, `${fieldPath}.altText#@alt`, `${fieldPath}.elementId#@id`].join(' ').trim() }
         : {};
 
+    // If a sibling WebP exists alongside the .jpg/.jpeg/.png in /public/images/,
+    // serve it via <picture> for browsers that support it. Falls back to the original.
+    // Sibling WebPs are produced by scripts/compress-hero-images.mjs.
+    const webpUrl = /\.(jpe?g|png)$/i.test(url) ? url.replace(/\.(jpe?g|png)$/i, '.webp') : null;
+
+    const imgClasses = classNames(
+        imageClassName,
+        styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : undefined,
+        styles?.self?.borderWidth && styles?.self?.borderWidth !== 0 && styles?.self?.borderStyle !== 'none'
+            ? mapStyles({
+                  borderWidth: styles?.self?.borderWidth,
+                  borderStyle: styles?.self?.borderStyle,
+                  borderColor: styles?.self?.borderColor ?? 'border-primary'
+              })
+            : undefined,
+        styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
+    );
+
     return (
         <div
             className={classNames(
@@ -24,23 +42,10 @@ export default function ImageBlock(props) {
             )}
             {...annotations}
         >
-            <img
-                id={elementId}
-                className={classNames(
-                    imageClassName,
-                    styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : undefined,
-                    styles?.self?.borderWidth && styles?.self?.borderWidth !== 0 && styles?.self?.borderStyle !== 'none'
-                        ? mapStyles({
-                              borderWidth: styles?.self?.borderWidth,
-                              borderStyle: styles?.self?.borderStyle,
-                              borderColor: styles?.self?.borderColor ?? 'border-primary'
-                          })
-                        : undefined,
-                    styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
-                )}
-                src={url}
-                alt={altText}
-            />
+            <picture>
+                {webpUrl && <source srcSet={webpUrl} type="image/webp" />}
+                <img id={elementId} className={imgClasses} src={url} alt={altText} loading="lazy" decoding="async" />
+            </picture>
         </div>
     );
 }

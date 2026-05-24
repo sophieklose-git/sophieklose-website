@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+/* Fonts are loaded via next/font/google in src/pages/_app.js (self-hosted,
+   non-render-blocking). CSS variables --font-sans and --font-serif are set
+   on a wrapper div and referenced from tailwind.config.js fontFamily. */
 
 @tailwind base;
 @tailwind components;

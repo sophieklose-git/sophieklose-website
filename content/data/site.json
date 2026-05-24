@@ -2,7 +2,7 @@
     "favicon": "/images/favicon.svg",
     "footer": "content/data/footer.json",
     "titleSuffix": "",
-    "defaultSocialImage": "/images/main-hero.jpg",
+    "defaultSocialImage": "/images/seerose.jpg",
     "type": "Config",
     "header": "content/data/header.json"
 }

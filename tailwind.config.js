@@ -29,8 +29,8 @@ module.exports = {
                 midGrey: '#6B6B6B'
             },
             fontFamily: {
-                sans: ['Jost', 'sans-serif'],
-                serif: ['Cormorant Garamond', 'serif']
+                sans: ['var(--font-sans)', 'sans-serif'],
+                serif: ['var(--font-serif)', 'serif']
             },
             gridTemplateColumns: {
                 16: 'repeat(16, minmax(0, 1fr))'

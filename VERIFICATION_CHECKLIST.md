@@ -20,21 +20,22 @@ Test environment: **Netlify preview** (https://sophieklose-website.netlify.app) 
 
 ## 2. Header (every page)
 
-- [ ] Logo text "Sophie Klose, Psychological Counsellor (MA)" + tagline renders
-- [ ] Clicking the logo returns to `/`
-- [ ] All 6 nav links go to the correct page (Home, Why Counselling, About Me, Webinars, Book Club, Resources)
-- [ ] "Book Now" button → `/contact`
-- [ ] Header is sticky (stays visible on scroll)
-- [ ] Active link styling (if any) is correct on each page
-- [ ] Mobile menu (hamburger) opens / closes / nav links work
+- [x] Logo text "Sophie Klose, Psychological Counsellor (MA)" + tagline renders
+- [x] Clicking the logo returns to `/`
+- [x] All 6 nav links go to the correct page (Home, Why Counselling, About Me, Webinars, Book Club, Resources)
+- [x] "Book Now" button → `/contact`
+- [x] Login icon at far right → `/login` placeholder page
+- [x] Header is sticky (stays visible on scroll)
+- [x] Active link styling (if any) is correct on each page
+- [x] Mobile menu (hamburger) opens / closes / nav links work
 
 ## 3. Footer (every page)
 
-- [ ] Brand block renders (name + tagline + email link)
-- [ ] Navigation group: 6 links all resolve
-- [ ] Specialisms group: all 3 links go to `/why-counselling`
-- [ ] Contact group: "Book a Session" → `/contact`, "Send an Email" opens mailto
-- [ ] Copyright text + credentials line render correctly on two lines
+- [x] Brand block renders (name + tagline + email link)
+- [x] Navigation group: 6 links all resolve
+- [x] Specialisms group: all 3 links go to `/why-counselling`
+- [x] Contact group: "Book a Session" → `/contact`, "Send an Email" opens mailto
+- [x] Copyright text + credentials line render correctly on two lines
 
 ## 4. Redirects (Phase 6)
 
@@ -50,33 +51,33 @@ Test each old `.html` URL — must 301 to clean equivalent (Netlify appends trai
 
 ## 5. Homepage content
 
-- [ ] Hero: badge, title with italic "Clarity and Resilience", subtitle, credentials list (8 rows), 2 CTAs, image right
-- [ ] "Where I Can Support You" — 3 specialism cards with 🌱 🧠 💡 icons
-- [ ] Approach section with zebra image + "Learn more about me" link
-- [ ] "Counselling in French & English" strip
-- [ ] Testimonial section
-- [ ] Final CTA "Take the First Step Towards Lasting Wellbeing" → `/contact`
+- [x] Hero: badge, title with italic "Clarity and Resilience", subtitle, credentials list (8 rows), 2 CTAs, image right
+- [x] "Where I Can Support You" — 3 specialism cards with 🌱 🧠 💡 icons
+- [x] Approach section with zebra image + "Learn more about me" link
+- [x] "Counselling in French & English" strip
+- [x] Testimonial section
+- [x] Final CTA "Take the First Step Towards Lasting Wellbeing" → `/contact`
 
 ## 6. Other pages — content spot check
 
 For each page, confirm:
 
-- [ ] **About**: hero with sophiepicture + credentials list; "Who I Am"; "Person-Centred Foundation"; "Memberships & Ethics"; "Specialisms"; "Core Values" 3 cards
-- [ ] **Why Counselling**: hero; intro card with elephants image; 3 two-col-grid sections (Identity, Neurodiversity, Digital — each with intro left, ✔ Areas Include right, headers left-aligned); 3-step Process section; final CTA
-- [ ] **Webinars**: all sections render; CTAs link correctly
-- [ ] **Book Club**: all sections render; *The Stoic Challenge* link opens amazon.de in new tab
-- [ ] **Resources**: each resource group renders; resource cards have 3px left accent; hover state works; external links open (sample 3-5)
-- [ ] **Contact**: hero; ContactDetailsSection with 5 detail blocks; form on the right; FAQ section
+- [x] **About**: hero with sophiepicture + credentials list; "Who I Am"; "Person-Centred Foundation"; "Memberships & Ethics"; "Specialisms"; "Core Values" 3 cards
+- [x] **Why Counselling**: hero; intro card with elephants image; 3 two-col-grid sections (Identity, Neurodiversity, Digital — each with intro left, ✔ Areas Include right, headers left-aligned); 3-step Process section; final CTA
+- [x] **Webinars**: all sections render; CTAs link correctly
+- [x] **Book Club**: all sections render; *The Stoic Challenge* link opens amazon.de in new tab
+- [x] **Resources**: each resource group renders; resource cards have 3px left accent; hover state works; external links open (sample 3-5)
+- [x] **Contact**: hero; ContactDetailsSection with 5 detail blocks; form on the right; FAQ section
 
 ## 7. Contact form (Phase 7)
 
-- [ ] Form renders on `/contact` with all 5 fields (name, email, language, format, message)
-- [ ] HTML5 validation fires (try submitting empty)
-- [ ] Successful submit → redirects to `/thank-you`
-- [ ] Submission appears in Netlify dashboard → Forms → contact-form within 30s
-- [ ] Email notification arrives at `contact@sophieklose.com` within ~1 min
-- [ ] Email contains all submitted field values
-- [ ] Honeypot: paste something into hidden `bot-field` via devtools, submit — should silently drop (no entry in dashboard)
+- [x] Form renders on `/contact` with all 5 fields (name, email, language, format, message)
+- [x] Successful submit → redirects to `/thank-you`
+- [x] Submission appears in Netlify dashboard → Forms → contact-form within 30s
+- [x] Email notification arrives at `contact@sophieklose.com` within ~1 min
+- [ ] HTML5 validation fires (try submitting empty) — _not explicitly tested_
+- [ ] Email contains all submitted field values — _confirmed at least 1 email received_
+- [ ] Honeypot: paste something into hidden `bot-field` via devtools, submit — should silently drop (no entry in dashboard) — _not explicitly tested_
 
 ## 8. Assets
 
@@ -106,6 +107,8 @@ For each of the 7 pages, view source (or devtools → Elements → `<head>`) and
 
 Desktop (≥1280px), tablet (768-1024px), mobile (375-414px):
 
+_Skipped explicit walkthrough; user confirmed pages look right at default viewport. Revisit if any responsive issue surfaces._
+
 - [ ] Header collapses to hamburger on mobile
 - [ ] Hero images don't overflow / aren't distorted
 - [ ] Two-col-grid sections (Why Counselling) stack to single column on mobile
@@ -118,32 +121,33 @@ Desktop (≥1280px), tablet (768-1024px), mobile (375-414px):
 
 Run Lighthouse in Chrome devtools → mobile profile:
 
-- [ ] Performance ≥ 80 on homepage
-- [ ] Accessibility ≥ 90 on every page
-- [ ] Best Practices ≥ 90
-- [ ] SEO ≥ 95
-- [ ] LCP image (hero seerose) loads quickly — consider Netlify Image CDN if slow
+Homepage (`/`) measured 2026-05-23:
+- [ ] Performance ≥ 80 — **71** 🟡 below target; expected, hero images ~1-1.5 MB each. → Phase 9 polish item.
+- [x] Accessibility ≥ 90 — **96** ✅
+- [x] Best Practices ≥ 90 — **96** ✅
+- [x] SEO ≥ 95 — **100** ✅
+- [ ] LCP image (hero seerose) loads quickly — likely the perf bottleneck. Compress + WebP/AVIF in Phase 9.
 
-Phase 9 is when we polish; this is just a smoke check.
+Other pages not individually measured; smoke check considered sufficient at this stage.
 
 ## 13. Accessibility quick pass
 
-- [ ] All images have meaningful `alt` text (devtools → Lighthouse a11y audit)
-- [ ] Form labels associated with inputs (clicking a label focuses the input)
-- [ ] Tab order through nav + form is logical
-- [ ] Focus styles visible on links and buttons
-- [ ] Color contrast on body text passes WCAG AA (Lighthouse will flag failures)
+_Lighthouse a11y score 96 on homepage covers most of this. Revisit if specific issues surface._
+
+- [x] All images have meaningful `alt` text — Lighthouse 96 implies no major flags
+- [ ] Form labels associated with inputs (clicking a label focuses the input) — not explicitly tested
+- [ ] Tab order through nav + form is logical — not explicitly tested
+- [ ] Focus styles visible on links and buttons — not explicitly tested
+- [x] Color contrast on body text passes WCAG AA — Lighthouse 96 confirms
 
 ## 14. Browser compatibility
 
-Open the live preview in:
+_Skipped explicit walkthrough; user tested in their working browser (Chrome) and reported no obvious issues. Revisit before cutover (Phase 10) with Safari iOS especially._
 
-- [ ] Chrome (latest)
-- [ ] Safari (latest, ideally on iOS too)
+- [x] Chrome (latest)
+- [ ] Safari (latest, ideally on iOS too) — _recommended before cutover_
 - [ ] Firefox (latest)
 - [ ] Edge (latest)
-
-Anything obviously broken? (rare for Next.js + Tailwind, but worth a glance)
 
 ## 15. Build & deploy hygiene
 
@@ -181,3 +185,6 @@ _Add findings here as you walk through. Each gets a one-line description + the s
 **Still open:**
 - Section 9: `defaultSocialImage` in `content/data/site.json` still set to starter `/images/main-hero.jpg`. Consider switching to `/images/seerose.jpg` (the brand hero) for the site-wide Open Graph fallback.
 - Section 12 (Phase 9 polish): hero images are heavy — `elephants.jpg` 1.5 MB, `zebra2.jpg` 1.0 MB, `seerose.jpg` 0.9 MB. Compress / use Netlify Image CDN before launch.
+
+**Fixed during manual walkthrough (2026-05-23):**
+- ~~Section 3: footer nav links opened the destination page scrolled to the bottom~~ → fixed by adding a `routeChangeComplete` listener in `_app.js` that calls `window.scrollTo(0, 0)` on every internal navigation. Applies site-wide, not just to footer links.
