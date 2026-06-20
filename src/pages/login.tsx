@@ -74,7 +74,7 @@ function SignInForm({ onForgot }: { onForgot: () => void }) {
             setError(error.message);
             setBusy(false);
         } else {
-            window.location.assign('/account');
+            window.location.assign('/');
         }
     }
 
