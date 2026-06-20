@@ -1,7 +1,16 @@
-// Edge middleware: gates /account/* behind a Supabase session.
-// Unauthenticated visitors are redirected to /login.
+// Edge middleware: gates /account/* and /admin/* behind a Supabase session.
+// /admin/* additionally requires the user's email to be in ADMIN_EMAILS.
 import { type NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
+
+function isAdmin(email: string | null | undefined) {
+    if (!email) return false;
+    const allow = (process.env.ADMIN_EMAILS ?? '')
+        .split(',')
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean);
+    return allow.includes(email.toLowerCase());
+}
 
 export async function middleware(request: NextRequest) {
     let response = NextResponse.next({ request });
@@ -23,9 +32,16 @@ export async function middleware(request: NextRequest) {
         data: { user }
     } = await supabase.auth.getUser();
 
-    if (!user && request.nextUrl.pathname.startsWith('/account')) {
+    const path = request.nextUrl.pathname;
+    const needsAuth = path.startsWith('/account') || path.startsWith('/admin');
+    if (needsAuth && !user) {
         const url = request.nextUrl.clone();
         url.pathname = '/login';
+        return NextResponse.redirect(url);
+    }
+    if (path.startsWith('/admin') && !isAdmin(user?.email)) {
+        const url = request.nextUrl.clone();
+        url.pathname = '/account';
         return NextResponse.redirect(url);
     }
 
@@ -33,5 +49,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/account/:path*']
+    matcher: ['/account/:path*', '/admin/:path*']
 };
