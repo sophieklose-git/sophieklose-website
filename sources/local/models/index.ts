@@ -19,6 +19,7 @@ import { ImageGallerySection } from './ImageGallerySection';
 import { Link } from './Link';
 import { PageLayout } from './PageLayout';
 import { ResourceGroupSection } from './ResourceGroupSection';
+import { BookClubSelectionsSection } from './BookClubSelectionsSection';
 import { SelectFormControl } from './SelectFormControl';
 import { Social } from './Social';
 import { SubNav } from './SubNav';
@@ -58,6 +59,7 @@ export const allModels = {
     Link,
     PageLayout,
     ResourceGroupSection,
+    BookClubSelectionsSection,
     SelectFormControl,
     Social,
     SubNav,

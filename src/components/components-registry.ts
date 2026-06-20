@@ -45,6 +45,7 @@ const components = {
     ImageBlock: dynamic(() => import('./blocks/ImageBlock')),
     ImageGallerySection: dynamic(() => import('./sections/ImageGallerySection')),
     ResourceGroupSection: dynamic(() => import('./sections/ResourceGroupSection')),
+    BookClubSelectionsSection: dynamic(() => import('./sections/BookClubSelectionsSection')),
     SelectFormControl: dynamic(() => import('./blocks/FormBlock/SelectFormControl')),
     TextareaFormControl: dynamic(() => import('./blocks/FormBlock/TextareaFormControl')),
     TextFormControl: dynamic(() => import('./blocks/FormBlock/TextFormControl')),

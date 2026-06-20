@@ -97,5 +97,14 @@ const StaticPropsResolvers = {
             ...props,
             resources
         };
+    },
+    BookClubSelectionsSection: (props, data) => {
+        const selections = (data.objects ?? []).filter(
+            (object) => object.__metadata?.modelName === 'BookClubSelectionRow'
+        );
+        return {
+            ...props,
+            selections
+        };
     }
 };

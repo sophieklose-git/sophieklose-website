@@ -72,45 +72,16 @@ sections:
         textAlign: center
       subtitle:
         textAlign: center
-  - type: GenericSection
-    title:
-      text: May's *Selection*
-      color: text-dark
-      styles:
-        self:
-          textAlign: left
-      type: TitleBlock
-    text: |-
-      <p class="text-lg sm:text-2xl text-left mt-4"><a class="no-underline hover:no-underline" href="https://www.amazon.de/-/en/Stoic-Challenge-Philosophers-Becoming-Resilient/dp/0393541495">The Stoic Challenge</a></p>
-
-      *by William B. Irvine*
-
-      > *A philosopher's guide to becoming tougher, calmer, and more resilient.*
-
-      To begin, I have selected a book rooted in Stoicism, a philosophy that has endured for thousands of years, and whose thinkers like Seneca and Marcus Aurelius continue to offer surprisingly practical guidance for modern life.
-
-      I came across this book through Jonathan Haidt, professor at NYU Stern and author of The Anxious Generation, as part of the reading list for his 2023 positive psychology course Work, Wisdom and Happiness. As one of the leading researchers documenting the decline in youth wellbeing in the age of technology, his reading choices felt important to explore.
-
-      In The Stoic Challenge, Irvine builds on his earlier work and focuses on how Stoic principles can help us navigate everyday setbacks. The book brings together ancient philosophy and modern psychology, offering practical strategies for becoming more resilient in the face of every day setbacks.
-
-      [amazon.de →](https://www.amazon.de/-/en/Stoic-Challenge-Philosophers-Becoming-Resilient/dp/0393541495)
-    media:
-      url: /images/the-stoic-challenge.png
-      altText: The Stoic Challenge by William B. Irvine — book cover
-      type: ImageBlock
-    wideText: true
+  - type: BookClubSelectionsSection
+    title: Monthly *Selections*
     colors: bg-light-fg-dark
     styles:
       self:
-        flexDirection: row
-        alignItems: center
         padding:
           - pt-16
           - pb-16
-          - pl-16
+          - pl-8
           - pr-8
-      subtitle:
-        textAlign: left
   - type: GenericSection
     title:
       text: Have a *Question?*

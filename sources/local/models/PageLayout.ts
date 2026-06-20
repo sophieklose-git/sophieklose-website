@@ -45,7 +45,8 @@ export const PageLayout: Model = {
                     'FeaturedItemsSection',
                     'GenericSection',
                     'ImageGallerySection',
-                    'ResourceGroupSection'
+                    'ResourceGroupSection',
+                    'BookClubSelectionsSection'
                 ]
             }
         },
