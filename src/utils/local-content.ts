@@ -10,7 +10,6 @@ import { getPageUrl } from './page-utils';
 
 const pagesDir = 'content/pages';
 const dataDir = 'content/data';
-const resourcesDir = 'content/resources';
 
 const allReferenceFields = {};
 Object.entries(allModels).forEach(([modelName, model]) => {
@@ -92,11 +91,11 @@ function resolveReferences(content, fileToContent) {
 }
 
 export function allContent() {
-    const [data, pages, resources] = [dataDir, pagesDir, resourcesDir].map((dir) => {
+    const [data, pages] = [dataDir, pagesDir].map((dir) => {
         if (!fs.existsSync(dir)) return [];
         return contentFilesInPath(dir).map((file) => readContent(file));
     });
-    const objects = [...pages, ...data, ...resources];
+    const objects = [...pages, ...data];
     const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
     objects.forEach((e) => resolveReferences(e, fileToContent));
 

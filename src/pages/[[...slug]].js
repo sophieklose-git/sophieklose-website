@@ -1,10 +1,37 @@
 import React from 'react';
 import Head from 'next/head';
+import { createClient } from '@supabase/supabase-js';
 import { allContent } from '../utils/local-content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
 import { resolveStaticPaths } from '../utils/static-paths-resolvers';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
+
+async function fetchResourceObjects() {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) return [];
+    const supabase = createClient(url, key, { auth: { persistSession: false } });
+    const { data, error } = await supabase
+        .from('resources')
+        .select('slug, title, tag, description, link_label, link_url, group_slug, sort_order')
+        .order('group_slug')
+        .order('sort_order');
+    if (error) {
+        console.error('Supabase resources fetch failed:', error.message);
+        return [];
+    }
+    return (data ?? []).map((r) => ({
+        type: 'Resource',
+        title: r.title,
+        tag: r.tag,
+        description: r.description ?? '',
+        linkLabel: r.link_label ?? '',
+        linkUrl: r.link_url ?? '',
+        group: r.group_slug,
+        __metadata: { id: `supabase:resources/${r.slug}`, modelName: 'Resource' }
+    }));
+}
 
 function Page(props) {
     const { page, site } = props;
@@ -47,9 +74,11 @@ export function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const data = allContent();
+    const resourceObjects = await fetchResourceObjects();
+    data.objects = [...data.objects, ...resourceObjects];
     const urlPath = '/' + (params.slug || []).join('/');
     const props = await resolveStaticProps(urlPath, data);
-    return { props };
+    return { props, revalidate: 60 };
 }
 
 export default Page;
