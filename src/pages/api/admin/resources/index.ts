@@ -1,6 +1,6 @@
 // GET  /api/admin/resources  → list all resources (admin sees order/sort fields too)
 // POST /api/admin/resources  → create new resource
-import { withAdmin, revalidate } from '../../../../lib/admin-api';
+import { withAdmin } from '../../../../lib/admin-api';
 
 const RESOURCE_FIELDS =
     'id, slug, title, tag, description, link_label, link_url, group_slug, sort_order, updated_at';
@@ -23,7 +23,6 @@ export default withAdmin(async (req, res, { db }) => {
         }
         const { data, error } = await db.from('resources').insert(payload).select(RESOURCE_FIELDS).single();
         if (error) return res.status(400).json({ error: error.message });
-        await revalidate(res, ['/resources']);
         return res.status(201).json({ resource: data });
     }
     res.setHeader('Allow', 'GET, POST');

@@ -4,7 +4,6 @@ import { createClient } from '@supabase/supabase-js';
 import { allContent } from '../utils/local-content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
-import { resolveStaticPaths } from '../utils/static-paths-resolvers';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
 
 function getSupabaseBuildClient() {
@@ -85,13 +84,14 @@ function Page(props) {
     );
 }
 
-export function getStaticPaths() {
-    const data = allContent();
-    const paths = resolveStaticPaths(data);
-    return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
+// SSR (was ISR with `revalidate: 60`). Switched because Netlify's
+// @netlify/plugin-nextjs has unreliable on-demand revalidation on catch-all
+// routes, leading to stale book-club / resources content after admin edits.
+// SSR fetches fresh on every request; explicit no-store header prevents
+// Netlify's durable edge cache from serving stale.
+export async function getServerSideProps({ params, res, resolvedUrl }) {
+    res.setHeader('Cache-Control', 'no-store, max-age=0, must-revalidate');
+    res.setHeader('Netlify-CDN-Cache-Control', 'no-store');
     const data = allContent();
     const [resourceObjects, bookClubSelections] = await Promise.all([
         fetchResourceObjects(),
@@ -106,9 +106,13 @@ export async function getStaticProps({ params }) {
             __metadata: { id: `supabase:book_club_selections/${s.slug}`, modelName: 'BookClubSelectionRow' }
         }))
     ];
-    const urlPath = '/' + (params.slug || []).join('/');
-    const props = await resolveStaticProps(urlPath, data);
-    return { props, revalidate: 60 };
+    const urlPath = '/' + (params?.slug || []).join('/');
+    try {
+        const props = await resolveStaticProps(urlPath, data);
+        return { props };
+    } catch {
+        return { notFound: true };
+    }
 }
 
 export default Page;

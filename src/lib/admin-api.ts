@@ -4,18 +4,6 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { createClient as createServerSupabase } from './supabase/server';
 import { isAdminEmail, createServiceClient } from './admin';
 
-// Trigger on-demand ISR revalidation. Swallow errors — a failed revalidate
-// should not fail the admin save. The ISR background refresh will catch up
-// within ~60s anyway.
-export async function revalidate(res: NextApiResponse, paths: string[]) {
-    for (const p of paths) {
-        try {
-            await res.revalidate(p);
-        } catch (e) {
-            console.error(`revalidate(${p}) failed`, e);
-        }
-    }
-}
 
 export type AdminHandler = (
     req: NextApiRequest,

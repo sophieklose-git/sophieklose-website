@@ -1,6 +1,6 @@
 // PUT    /api/admin/book-club/[slug]  → update
 // DELETE /api/admin/book-club/[slug]  → delete
-import { withAdmin, revalidate } from '../../../../lib/admin-api';
+import { withAdmin } from '../../../../lib/admin-api';
 
 export default withAdmin(async (req, res, { db }) => {
     const slug = String(req.query.slug ?? '');
@@ -27,13 +27,11 @@ export default withAdmin(async (req, res, { db }) => {
             .select()
             .single();
         if (error) return res.status(400).json({ error: error.message });
-        await revalidate(res, ['/book-club']);
         return res.status(200).json({ selection: data });
     }
     if (req.method === 'DELETE') {
         const { error } = await db.from('book_club_selections').delete().eq('slug', slug);
         if (error) return res.status(400).json({ error: error.message });
-        await revalidate(res, ['/book-club']);
         return res.status(204).end();
     }
     res.setHeader('Allow', 'PUT, DELETE');

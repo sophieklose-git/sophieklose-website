@@ -32,9 +32,14 @@ export default function AdminLayout({ title, children }: { title: string; childr
                             <p className="text-xs uppercase tracking-widest text-clay">Admin</p>
                             <h1 className="font-serif text-3xl mt-1">{title}</h1>
                         </div>
-                        <button onClick={logout} className="text-sm text-deepSage border-b border-clayLight hover:border-clay">
-                            Log out
-                        </button>
+                        <div className="flex gap-6 items-center">
+                            <Link href="/" className="text-sm text-deepSage border-b border-clayLight hover:border-clay">
+                                Back to site
+                            </Link>
+                            <button onClick={logout} className="text-sm text-deepSage border-b border-clayLight hover:border-clay">
+                                Log out
+                            </button>
+                        </div>
                     </header>
                     <nav className="flex gap-6 border-b border-neutralAlt mb-10">
                         {NAV.map((item) => {
