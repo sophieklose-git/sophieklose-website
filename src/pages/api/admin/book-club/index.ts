@@ -1,6 +1,6 @@
 // GET  /api/admin/book-club  → list all selections
 // POST /api/admin/book-club  → create new selection
-import { withAdmin } from '../../../../lib/admin-api';
+import { withAdmin, revalidate } from '../../../../lib/admin-api';
 
 const FIELDS =
     'id, slug, selection_month, title, author, cover_url, purchase_url, purchase_label, intro_md, reflection_md, is_published, updated_at';
@@ -21,6 +21,7 @@ export default withAdmin(async (req, res, { db }) => {
         }
         const { data, error } = await db.from('book_club_selections').insert(payload).select(FIELDS).single();
         if (error) return res.status(400).json({ error: error.message });
+        await revalidate(res, ['/book-club']);
         return res.status(201).json({ selection: data });
     }
     res.setHeader('Allow', 'GET, POST');

@@ -1,6 +1,6 @@
 // PUT    /api/admin/resources/[slug]  → update existing resource
 // DELETE /api/admin/resources/[slug]  → delete resource
-import { withAdmin } from '../../../../lib/admin-api';
+import { withAdmin, revalidate } from '../../../../lib/admin-api';
 
 export default withAdmin(async (req, res, { db }) => {
     const slug = String(req.query.slug ?? '');
@@ -25,11 +25,13 @@ export default withAdmin(async (req, res, { db }) => {
             .select()
             .single();
         if (error) return res.status(400).json({ error: error.message });
+        await revalidate(res, ['/resources']);
         return res.status(200).json({ resource: data });
     }
     if (req.method === 'DELETE') {
         const { error } = await db.from('resources').delete().eq('slug', slug);
         if (error) return res.status(400).json({ error: error.message });
+        await revalidate(res, ['/resources']);
         return res.status(204).end();
     }
     res.setHeader('Allow', 'PUT, DELETE');
