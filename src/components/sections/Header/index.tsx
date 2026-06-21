@@ -310,7 +310,7 @@ function SiteLogoLink({ title, tagline, logo, enableAnnotations }) {
                     )}
                     {tagline && (
                         <span
-                            className="text-[0.65rem] sm:text-xs uppercase tracking-widest text-midGrey mt-0.5"
+                            className="font-sans text-[0.65rem] sm:text-xs uppercase tracking-widest text-midGrey mt-0.5"
                             {...(enableAnnotations && { 'data-sb-field-path': 'tagline' })}
                         >
                             {tagline}

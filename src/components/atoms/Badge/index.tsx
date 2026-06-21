@@ -13,20 +13,19 @@ export default function Badge(props) {
     }
 
     return (
-        <div
+        <p
             className={classNames(
                 'sb-component',
                 'sb-component-block',
                 'sb-component-badge',
+                'text-xs uppercase tracking-widest',
                 color,
                 className,
                 styles?.self ? mapStyles(styles?.self) : undefined
             )}
             data-sb-field-path={fieldPath}
         >
-            <span className="font-sans text-xs uppercase tracking-widest" {...(fieldPath && { 'data-sb-field-path': '.label' })}>
-                {label}
-            </span>
-        </div>
+            <span {...(fieldPath && { 'data-sb-field-path': '.label' })}>{label}</span>
+        </p>
     );
 }
