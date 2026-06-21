@@ -8,8 +8,11 @@ import { getPageUrl } from './page-utils';
 
 // TODO use types?
 
-const pagesDir = 'content/pages';
-const dataDir = 'content/data';
+// Resolve relative to process.cwd() so the paths work in dev (cwd = project
+// root) and in Netlify's serverless function (cwd is the function's bundle
+// root, which includes ./content via outputFileTracingIncludes in next.config).
+const pagesDir = path.join(process.cwd(), 'content/pages');
+const dataDir = path.join(process.cwd(), 'content/data');
 
 const allReferenceFields = {};
 Object.entries(allModels).forEach(([modelName, model]) => {

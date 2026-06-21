@@ -5,6 +5,12 @@ const nextConfig = {
     env: {
         stackbitPreview: process.env.STACKBIT_PREVIEW
     },
+    // SSR via getServerSideProps in [[...slug]].js reads markdown/JSON from
+    // ./content at request time. Without this, Netlify's serverless function
+    // bundle excludes those files and the page 404s in production.
+    outputFileTracingIncludes: {
+        '/[[...slug]]': ['./content/**/*']
+    },
     trailingSlash: true,
     reactStrictMode: true,
     allowedDevOrigins: [
