@@ -8,7 +8,8 @@ import { createClient as createBrowserSupabase } from '../../lib/supabase/client
 const NAV = [
     { href: '/admin', label: 'Overview' },
     { href: '/admin/resources', label: 'Resources' },
-    { href: '/admin/book-club', label: 'Book club' }
+    { href: '/admin/book-club', label: 'Book club' },
+    { href: '/admin/users', label: 'Users' }
 ];
 
 export default function AdminLayout({ title, children }: { title: string; children: React.ReactNode }) {
@@ -37,7 +38,10 @@ export default function AdminLayout({ title, children }: { title: string; childr
                     </header>
                     <nav className="flex gap-6 border-b border-neutralAlt mb-10">
                         {NAV.map((item) => {
-                            const active = router.pathname === item.href;
+                            const active =
+                                item.href === '/admin'
+                                    ? router.pathname === '/admin'
+                                    : router.pathname.startsWith(item.href);
                             return (
                                 <Link
                                     key={item.href}

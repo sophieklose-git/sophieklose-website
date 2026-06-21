@@ -14,6 +14,10 @@ export default function AdminHome() {
                     <h2 className="font-serif text-xl mb-2">Book club</h2>
                     <p className="text-sm text-midGrey">Monthly selections shown on /book-club. Add a new month or edit the reflection.</p>
                 </Link>
+                <Link href="/admin/users" className="bg-light p-8 hover:bg-neutralAlt transition">
+                    <h2 className="font-serif text-xl mb-2">Users</h2>
+                    <p className="text-sm text-midGrey">Registered accounts with profile details and address.</p>
+                </Link>
             </div>
             <p className="text-xs text-midGrey mt-10">
                 Changes appear on the public site within ~60 seconds (ISR cache).
