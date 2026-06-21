@@ -9,7 +9,8 @@ const NAV = [
     { href: '/admin', label: 'Overview' },
     { href: '/admin/resources', label: 'Resources' },
     { href: '/admin/book-club', label: 'Book club' },
-    { href: '/admin/users', label: 'Users' }
+    { href: '/admin/users', label: 'Users' },
+    { href: '/admin/style-guide', label: 'Style guide' }
 ];
 
 export default function AdminLayout({ title, children }: { title: string; children: React.ReactNode }) {

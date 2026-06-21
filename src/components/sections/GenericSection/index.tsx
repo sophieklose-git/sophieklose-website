@@ -46,22 +46,24 @@ export default function GenericSection(props) {
                         })}
                     >
                         {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
-                        {title && (
-                            <TitleBlock
-                                {...title}
-                                className={classNames({ 'mt-4': badge?.label })}
-                                {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
-                            />
-                        )}
+                        {/* Per style guide: subtitle renders as an EYEBROW above the title, not below it. */}
                         {subtitle && (
                             <p
-                                className={classNames('text-lg', 'sm:text-2xl', styles?.subtitle ? mapStyles(styles?.subtitle) : undefined, {
-                                    'mt-4': badge?.label || title?.text
+                                className={classNames('text-xs uppercase tracking-widest text-clay', styles?.subtitle ? mapStyles(styles?.subtitle) : undefined, {
+                                    'mt-4': badge?.label,
+                                    'mb-3': !!title?.text
                                 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.subtitle' })}
                             >
                                 {subtitle}
                             </p>
+                        )}
+                        {title && (
+                            <TitleBlock
+                                {...title}
+                                className={classNames({ 'mt-4': badge?.label && !subtitle })}
+                                {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
+                            />
                         )}
                         {text && (
                             <Markdown

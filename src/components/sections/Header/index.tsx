@@ -10,6 +10,7 @@ import ChevronDownIcon from '../../svgs/chevron-down';
 import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
 import UserIcon from '../../svgs/user';
+import { createClient as createBrowserSupabase } from '../../../lib/supabase/client';
 
 export default function Header(props) {
     const { colors = 'bg-light-fg-dark', styles = {}, enableAnnotations } = props;
@@ -133,16 +134,55 @@ function HeaderLogoLeftPrimaryRight(props) {
     );
 }
 
-// Login icon at the far right of the header. Placeholder /login page until Phase 11 (Supabase auth) wires up real authentication.
+// Account icon at the far right of the header. Shows the signed-in user's
+// first name below the icon, or "Log In" if unauthenticated.
 function LoginIconLink() {
+    const [firstName, setFirstName] = useState<string | null>(null);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        const supabase = createBrowserSupabase();
+        let cancelled = false;
+        supabase.auth.getUser().then(({ data }) => {
+            if (cancelled) return;
+            const meta = data.user?.user_metadata ?? {};
+            const name = (meta.first_name as string) || (data.user?.email?.split('@')[0] ?? '');
+            setFirstName(name || null);
+            setLoaded(true);
+        });
+        const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
+            const meta = session?.user?.user_metadata ?? {};
+            const name = (meta.first_name as string) || (session?.user?.email?.split('@')[0] ?? '');
+            setFirstName(name || null);
+            setLoaded(true);
+        });
+        return () => {
+            cancelled = true;
+            sub.subscription.unsubscribe();
+        };
+    }, []);
+
+    const href = firstName ? '/account' : '/login';
+    const label = firstName ?? 'Log In';
+
     return (
         <a
-            href="/login"
-            aria-label="Sign in or register"
-            title="Sign in"
-            className="hidden lg:inline-flex items-center justify-center w-9 h-9 ml-4 text-current hover:text-primary transition-colors"
+            href={href}
+            aria-label={firstName ? `Signed in as ${firstName}` : 'Sign in or register'}
+            title={label}
+            className="hidden lg:inline-flex flex-col items-center justify-center ml-6 text-current hover:text-primary transition-colors"
         >
             <UserIcon className="w-5 h-5" />
+            {/* Reserved-space label avoids layout shift while auth state resolves */}
+            <span
+                aria-hidden={!loaded}
+                className={classNames(
+                    'mt-1 font-sans uppercase tracking-widest text-[0.65rem] leading-tight transition-opacity duration-150',
+                    loaded ? 'opacity-100' : 'opacity-0'
+                )}
+            >
+                {loaded ? label : 'Log In'}
+            </span>
         </a>
     );
 }
@@ -308,9 +348,13 @@ function ListOfLinks(props) {
                         >
                             <Action
                                 {...link}
-                                className={classNames('whitespace-nowrap', inMobileMenu ? 'w-full' : 'text-sm', {
-                                    'justify-start py-3': inMobileMenu && link.__metadata.modelName === 'Link'
-                                })}
+                                className={classNames(
+                                    'whitespace-nowrap font-sans uppercase tracking-widest',
+                                    inMobileMenu ? 'w-full text-base' : 'text-xs',
+                                    {
+                                        'justify-start py-3': inMobileMenu && link.__metadata.modelName === 'Link'
+                                    }
+                                )}
                                 {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
                             />
                         </li>
@@ -368,7 +412,8 @@ function LinkWithSubnav(props) {
                     link.labelStyle === 'secondary' ? 'sb-component-link-secondary' : 'sb-component-link-primary',
                     'inline-flex',
                     'items-center',
-                    inMobileMenu ? 'w-full' : 'text-sm',
+                    'font-sans uppercase tracking-widest',
+                    inMobileMenu ? 'w-full text-base' : 'text-xs',
                     {
                         'group-hover:no-underline hover:no-underline': !inMobileMenu && (link.labelStyle ?? 'primary') === 'primary',
                         'group-hover:text-primary': !inMobileMenu && link.labelStyle === 'secondary'
@@ -403,7 +448,7 @@ function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false })
                 <li key={index}>
                     <Action
                         {...link}
-                        className={classNames(inMobileMenu ? 'w-full justify-start' : 'text-sm')}
+                        className={classNames('font-sans uppercase tracking-widest', inMobileMenu ? 'w-full justify-start text-base' : 'text-xs')}
                         {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })}
                     />
                 </li>

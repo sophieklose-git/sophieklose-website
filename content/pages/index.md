@@ -7,8 +7,9 @@ sections:
       text: Navigate Life's Transitions with *Clarity and Resilience.*
       color: text-dark
       type: TitleBlock
-    subtitle: Compassionate, bilingual psychological counselling in Zurich and online. Helping you find belonging, balance, and growth in an ever-changing world.
     text: |-
+      Compassionate, bilingual psychological counselling in Zurich and online. Helping you find belonging, balance, and growth in an ever-changing world.
+
       <div class="mt-12 max-w-sm text-sm">
       <p class="text-xs uppercase tracking-widest font-semibold opacity-70 mb-3">Professional Credentials</p>
       <div class="py-3 border-b border-gray-300">MA Counselling</div>
@@ -35,7 +36,6 @@ sections:
       type: ImageBlock
     badge:
       label: Bilingual Counselling · Zurich & Online
-      color: text-primary
       type: Badge
     colors: bg-light-fg-dark
     styles:

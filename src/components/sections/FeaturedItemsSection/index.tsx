@@ -21,29 +21,30 @@ export default function FeaturedItemsSection(props) {
         >
             <div className={classNames('w-full', 'flex', 'flex-col', mapStyles({ alignItems: styles?.self?.justifyContent ?? 'flex-start' }))}>
                 {badge && <Badge {...badge} className="w-full max-w-sectionBody" {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
-                {title && (
-                    <TitleBlock
-                        {...title}
-                        className={classNames('w-full', 'max-w-sectionBody', { 'mt-4': badge?.label })}
-                        {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
-                    />
-                )}
+                {/* Per style guide: subtitle renders as an EYEBROW above the title, not below it. */}
                 {subtitle && (
                     <p
                         className={classNames(
                             'w-full',
                             'max-w-sectionBody',
-                            'text-lg',
-                            'sm:text-2xl',
+                            'text-xs uppercase tracking-widest text-clay',
                             styles?.subtitle ? mapStyles(styles?.subtitle) : undefined,
                             {
-                                'mt-4': badge?.label || title?.text
+                                'mt-4': badge?.label,
+                                'mb-3': !!title?.text
                             }
                         )}
                         {...(enableAnnotations && { 'data-sb-field-path': '.subtitle' })}
                     >
                         {subtitle}
                     </p>
+                )}
+                {title && (
+                    <TitleBlock
+                        {...title}
+                        className={classNames('w-full', 'max-w-sectionBody', { 'mt-4': badge?.label && !subtitle })}
+                        {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
+                    />
                 )}
                 <FeaturedItemVariants
                     variant={variant}

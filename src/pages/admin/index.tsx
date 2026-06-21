@@ -18,6 +18,10 @@ export default function AdminHome() {
                     <h2 className="font-serif text-xl mb-2">Users</h2>
                     <p className="text-sm text-midGrey">Registered accounts with profile details and address.</p>
                 </Link>
+                <Link href="/admin/style-guide" className="bg-light p-8 hover:bg-neutralAlt transition">
+                    <h2 className="font-serif text-xl mb-2">Style guide</h2>
+                    <p className="text-sm text-midGrey">Live design system: colors, type scale, button styles, component patterns.</p>
+                </Link>
             </div>
             <p className="text-xs text-midGrey mt-10">
                 Changes appear on the public site within ~60 seconds (ISR cache).

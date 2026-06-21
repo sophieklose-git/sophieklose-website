@@ -226,7 +226,7 @@ sections:
         icon: "01"
         title: Free Introductory Call
         text: A 15-minute conversation to explore your needs, answer your questions, and see whether we're a good fit — with no obligation to proceed.
-        colors: bg-light-fg-dark
+        colors: bg-neutral-fg-dark
         styles:
           self:
             padding:
@@ -234,13 +234,12 @@ sections:
               - pb-8
               - pl-8
               - pr-8
-            borderRadius: x-large
             textAlign: left
       - type: FeaturedItem
         icon: "02"
         title: Your First Session
         text: We take time to understand your background, your goals, and what you're hoping to gain from counselling. This session is all about you.
-        colors: bg-light-fg-dark
+        colors: bg-neutral-fg-dark
         styles:
           self:
             padding:
@@ -248,13 +247,12 @@ sections:
               - pb-8
               - pl-8
               - pr-8
-            borderRadius: x-large
             textAlign: left
       - type: FeaturedItem
         icon: "03"
         title: Ongoing Sessions
         text: Sessions are typically 50 minutes, weekly or fortnightly. We regularly review progress together to ensure the work remains meaningful to you.
-        colors: bg-light-fg-dark
+        colors: bg-neutral-fg-dark
         styles:
           self:
             padding:
@@ -262,7 +260,6 @@ sections:
               - pb-8
               - pl-8
               - pr-8
-            borderRadius: x-large
             textAlign: left
     colors: bg-light-fg-dark
     styles:
