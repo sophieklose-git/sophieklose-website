@@ -51,9 +51,12 @@ function readContent(file: string) {
             throw Error(`Unhandled file type: ${file}`);
     }
 
-    // Make Sourcebit-compatible
+    // Make Sourcebit-compatible.
+    // ID is the file's path relative to project root (cwd), with forward
+    // slashes. JSON content references siblings via these relative paths,
+    // e.g. site.json's `header: "content/data/header.json"`.
     content.__metadata = {
-        id: file.replace(/\\/g, '/'), // Replace backslashes with forward slashes
+        id: path.relative(process.cwd(), file).replace(/\\/g, '/'),
         modelName: content.type
     };
 
